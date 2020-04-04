@@ -1,0 +1,11 @@
+Package: i3-gaps
+Version: 1.0-1
+Section: base
+Priority: optional
+Architecture: i386
+Depends: dunst, libxcb-cursor0, fonts-powerline, fonts-font-awesome
+Maintainer: James Phllips <you@email.com>
+Description: i3-gaps
+ Tiling windows manager
+ with gaps around windows!
+
