@@ -11,8 +11,6 @@ RUN apt update && apt install -y git build-essential \
 FROM builder
 
 WORKDIR /opt
-ENV APP=i3-gaps_1.0-1
-
 RUN mkdir /opt/output && git clone https://www.github.com/Airblader/i3 i3-gaps && \
 	cd i3-gaps && \
 	autoreconf --force --install && \
@@ -22,6 +20,7 @@ RUN mkdir /opt/output && git clone https://www.github.com/Airblader/i3 i3-gaps &
 	make && \
 	make build
 
+ENV APP=i3-gaps_1.0-2
 RUN	cd i3-gaps/build && ls && mkdir -p $APP/DEBIAN \
 		 $APP/usr/bin \
 		 $APP/usr/share/applications \
@@ -54,8 +53,10 @@ RUN	cd i3-gaps/build && ls && mkdir -p $APP/DEBIAN \
 			  $APP/usr/include/i3/ipc.h
 
 WORKDIR /opt/i3-gaps/build
+ADD src/bin/* $APP/usr/bin
+RUN chmod +x $APP/usr/bin/*
 ADD src/meta/control $APP/DEBIAN
 
 RUN dpkg-deb --build $APP
 
-CMD ["cp", "/opt/i3-gaps/build/i3-gaps_1.0-1.deb", "/opt/output"]
+CMD ["cp", "/opt/i3-gaps/build/i3-gaps_1.0-2.deb", "/opt/output"]

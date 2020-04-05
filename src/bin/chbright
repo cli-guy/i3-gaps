@@ -1,0 +1,25 @@
+#!/bin/bash
+
+ACTION=${1}
+CURRENT=$(xrandr --verbose | grep Brightness: | cut -d' ' -f2)
+PRIMARY=$(xrandr | grep primary | cut -d' ' -f1)
+
+chbright(){
+	xrandr --output $PRIMARY --brightness ${1}
+}
+
+if [[ $ACTION == "inc" ]]; then
+	if [[ $CURRENT == "1.0" ]]; then
+		echo "Already at max!"
+		exit 0
+	fi
+	chbright $(echo $CURRENT + 0.1 | bc)
+fi
+
+if [[ $ACTION == "dec" ]]; then
+	if [[ $CURRENT == "0.50" ]]; then
+		echo "Already at min!"
+		exit 0
+	fi
+	chbright $(echo $CURRENT - 0.1 | bc)
+fi

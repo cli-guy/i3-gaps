@@ -7,7 +7,7 @@ build:
 
 install:
 	@echo "Installing..."
-	@sudo apt install -y ./output/i3-gaps_1.0-1.deb && echo "Installed i3-gaps and deps"
+	@sudo apt install -y ./output/i3-gaps_1.0-2.deb && echo "Installed i3-gaps and deps"
 	@pip3 install --user parse bumblebee-status && echo "Installed bumblebee-status and deps"
 	@echo "Install complete"
 
