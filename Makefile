@@ -7,8 +7,8 @@ build:
 
 install:
 	@echo "Installing..."
-	@sudo apt install -y ./output/i3-gaps_1.0-2.deb && echo "Installed i3-gaps and deps"
-	@pip3 install --user parse bumblebee-status && echo "Installed bumblebee-status and deps"
+	@sudo apt install -y ./output/i3-gaps_1.0-2.deb fzf aptitude neovim && echo "Installed apt packages."
+	@pip3 install --user parse bumblebee-status pynvim && echo "Installed pip packages."
 	@echo "Install complete"
 
 clean:
