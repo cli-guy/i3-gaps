@@ -7,7 +7,7 @@ build:
 
 install:
 	@echo "Installing..."
-	@sudo apt install -y ./output/i3-gaps_1.0-2.deb fzf aptitude neovim && echo "Installed apt packages."
+	@sudo apt install -y ./output/i3-gaps_1.0-2.deb fzf aptitude neovim lxappearance pavucontrol zsh && echo "Installed apt packages."
 	@pip3 install --user parse bumblebee-status pynvim && echo "Installed pip packages."
 	@echo "Install complete"
 
