@@ -1,7 +1,7 @@
 build:
 	@mkdir -p ./output && echo "Create output directory"
 	@echo "Start build"
-	@docker build -q -t i3ed . && echo "Build complete"
+	@docker build -t i3ed . && echo "Build complete"
 	@docker run -ti --mount type=bind,source=$(CURDIR)/output,target=/opt/output i3ed && echo "Exported deb"
 	@echo "Build complete, run \"make install\" to finish installation"
 

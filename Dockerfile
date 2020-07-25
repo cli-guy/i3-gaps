@@ -1,6 +1,6 @@
-FROM ubuntu:19.04 as builder
+FROM ubuntu:20.04 as builder
 
-RUN apt update && apt install -y git build-essential \
+RUN apt update && TZ=Europe/London DEBIAN_FRONTEND=noninteractive apt install -y git build-essential \
 	libxcb1-dev libxcb-keysyms1-dev libpango1.0-dev \
 	libxcb-util0-dev libxcb-icccm4-dev libyajl-dev \
 	libstartup-notification0-dev libxcb-randr0-dev \
@@ -21,19 +21,19 @@ RUN mkdir /opt/output && git clone https://www.github.com/Airblader/i3 i3-gaps &
 	make build
 
 ENV APP=i3-gaps_1.0-2
-RUN	cd i3-gaps/build && ls && mkdir -p $APP/DEBIAN \
+RUN	cd i3-gaps/build && ls -l && mkdir -p $APP/DEBIAN \
 		 $APP/usr/bin \
 		 $APP/usr/share/applications \
 		 $APP/usr/share/xsessions \
 		 $APP/usr/include/i3 \
 		 $APP/etc/i3 &&  \
 	cp  i3 \
-		i3bar/i3bar \
-		i3-config-wizard/i3-config-wizard \
-		i3-dump-log/i3-dump-log \
-		i3-input/i3-input \
-		i3-msg/i3-msg \
-		i3-nagbar/i3-nagbar \
+		i3bar \
+		i3-config-wizard \
+		i3-dump-log \
+		i3-input \
+		i3-msg \
+		i3-nagbar \
 		$APP/usr/bin && \
 	cp  ../../i3-gaps/i3-dmenu-desktop \
 		../../i3-gaps/i3-migrate-config-to-v4 \
